@@ -736,7 +736,7 @@ section {
 }
 
 .credit {
-  background: #222;
+  background: #333;
   text-align: center;
   font-size: 2rem;
   padding: 2rem 1rem;
@@ -766,8 +766,8 @@ section {
   .header .navbar {
     position: absolute;
     top: 99%;
-    left: 0;
     right: 0;
+    left: 0;
     background: #fff;
     -webkit-clip-path: polygon(0 0, 100% 0, 100% 0, 0 0);
             clip-path: polygon(0 0, 100% 0, 100% 0, 0 0);
@@ -782,7 +782,7 @@ section {
     display: block;
   }
   .home {
-    margin-top: 10rem;
+    margin-top: 5rem;
   }
   .home .content span {
     font-size: 8vw;
