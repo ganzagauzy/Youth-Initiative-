@@ -1,0 +1,85 @@
+1. Write a PLSQL program to print this pattern:
+
+*****
+****
+***
+**
+*
+
+2. Write a PLSQL program to prin this pattern:
+
+*
+**
+****
+******
+********
+
+3. What is the output of this program
+
+PROCEDURE display_dept_count IS 
+total_count INTEGER := 0; 
+BEGIN 
+SELECT COUNT(*) INTO total_count FROM EMPLOYEE WHERE EMP_DEPARTMENT = 11; 
+IF total_count = 0 
+THEN DBMS_OUTPUT.PUT_LINE ('No employees in department!'); 
+ELSE 
+DBMS_OUTPUT.PUT_LINE ('Count of employees in dept 15 = ' || TO_CHAR (total_count)); 
+END IF; 
+EXCEPTION WHEN NO_DATA_FOUND THEN 
+DBMS_OUTPUT.PUT_LINE ('No data found'); 
+END; 
+
+
+4. What statement should be removed from the following block?
+
+DECLARE 
+CURSOR emp_cur IS SELECT * FROM employee; 
+emp_rec emp_cur%ROWTYPE; 
+BEGIN 
+FOR emp_rec IN emp_cur 
+LOOP give_raise (emp_rec.empno); 
+END LOOP; 
+END;
+
+5. What cursor-related statements are missing from the following block?
+
+DECLARE 
+CURSOR emp_cur IS SELECT * FROM employee; 
+BEGIN 
+OPEN emp_cur; 
+FETCH emp_cur INTO emp_rec; 
+END; 
+
+6. How would you change the SELECT statement in the following block's cursor so that the block can display the sum of salaries in each department?
+
+DECLARE 
+CURSOR tot_cur IS SELECT EMP_DEPARTMENT, SUM (EMP_SALARY) FROM employee GROUP BY EMP_DEPARTMENT; 
+BEGIN FOR tot_rec IN tot_cur 
+LOOP 
+DBMS_OUTPUT.PUT_LINE ('Total is: ' || tot_rec.EMP_DEPARTMENT); 
+END LOOP; 
+END;
+
+7. What statement would you remove from this block? Why?
+
+DECLARE 
+CURSOR emp_cur IS SELECT EMP_CODE,EMP_FIRST_NAME, EMP_LAST_NAME, EMP_DEPARTMENT FROM employee WHERE EMP_SALARY < 2500;
+emp_rec emp_cur%ROWTYPE; 
+BEGIN 
+FOR emp_rec IN emp_cur 
+LOOP give_raise (emp_rec.EMP_CODE, 1); 
+END LOOP; 
+END;
+
+8. Rewrite the following IF statement to get rid of unnecessary nested IFs.
+
+IF salary < 10000 THEN 
+bonus := 2000; 
+ELSIF salary < 20000 THEN 
+bonus := 1500; ELSE 
+IF salary < 40000 THEN 
+bonus := 1000; 
+ELSE bonus := 500; 
+END IF; 
+END IF; 
+END IF;
